@@ -1,0 +1,19 @@
+{
+  "name": "start-pifm",
+  "main": "index.html",
+  "version": "0.0.0",
+  "single-instance": true,
+  "window": {
+    "title": "'Start pifm",
+    "icon": "favicon.png",
+    "width": 600,
+    "height": 300,
+    "min_width": 600,
+    "min_height": 300,
+    "toolbar": false
+  },
+  "chromium-args": "--child-clean-exit",
+  "dependencies": {
+    "simple-ssh": "^0.8.6"
+  }
+}
