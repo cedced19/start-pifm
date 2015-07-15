@@ -6,10 +6,10 @@
   "window": {
     "title": "'Start pifm",
     "icon": "favicon.png",
-    "width": 600,
-    "height": 300,
-    "min_width": 600,
-    "min_height": 300,
+    "width": 700,
+    "height": 500,
+    "min_width": 700,
+    "min_height": 500,
     "toolbar": false
   },
   "chromium-args": "--child-clean-exit",

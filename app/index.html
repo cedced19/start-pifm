@@ -15,6 +15,40 @@
             <h1>Start pifm</h1>
             <h4 id="message"></h4>
             <button id="end"  class="btn btn-success" style="display:none">Stop</button>
+            <form class="form-horizontal" style="display:none" id="form">
+                <fieldset>
+                    <legend>Configure</legend>
+                    <div class="form-group">
+                        <label for="form-username" class="col-lg-2 control-label">Username</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="form-username" placeholder="Username" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-command" class="col-lg-2 control-label">Command</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="form-command" placeholder="Command" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-ip" class="col-lg-2 control-label">Ip</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="form-ip" placeholder="Ip" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-password" class="col-lg-2 control-label">Password</label>
+                        <div class="col-lg-10">
+                            <input type="password" class="form-control" id="form-password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="submit" class="btn btn-primary" id="form-submit">Submit</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
         </div>
         <!-- build:js vendor/js/scripts.js -->
         <script src="vendor/js/jquery.min.js"></script>

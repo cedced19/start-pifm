@@ -10,6 +10,10 @@ A  software to start [pifm-node](https://github.com/cedced19/pifm-node) (or [pif
 
 ![Demo](demo.png)
 
+## Configuration example
+
+![Configuration example](configuration.png)
+
 ## To compile
 
 ```

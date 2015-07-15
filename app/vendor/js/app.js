@@ -4,18 +4,10 @@ $(document).ready(function () {
         path = require('path'),
         file = path.dirname(process.execPath) + '\\config.json',
         message = $('#message'),
-        button = $('#end');
+        button = $('#end'),
+        form =$('#form');
 
-    if (!fs.existsSync(file)) {
-        fs.writeFile(file, JSON.stringify({
-                ip: '192.168.0.78',
-                user: 'root',
-                pass: '****',
-                command: 'node pifm-node.js'
-            }), function (err) {
-                message.html('Please, configure the file <b>' + file + '</b>.');
-            });
-    } else {
+    var launch = function () {
         fs.readFile(file, function (err, data) {
                 var SSH = require('simple-ssh'),
                       data = JSON.parse(data);
@@ -36,6 +28,31 @@ $(document).ready(function () {
                         ssh.end();
                 });
         });
+    }
+
+    if (!fs.existsSync(file)) {
+        form.show();
+
+       $('#form-submit').click(function (e) {
+            e.preventDefault();
+            if ($('#form')[0].checkValidity()) {
+                fs.writeFile(file, JSON.stringify({
+                        ip: $('#form-ip').val(),
+                        user: $('#form-username').val(),
+                        pass: $('#form-password').val(),
+                        command: $('#form-command').val()
+                }), function (err) {
+                    if (err) {
+                        message.html('An error occurred!');
+                    } else {
+                        $('#form').hide();
+                        launch();
+                    }
+                 });
+            }
+        });
+    } else {
+        launch();
     }
 
 });
