@@ -1,7 +1,8 @@
 {
   "name": "start-pifm",
+  "appName": "Start pifm",
   "version": "0.0.0",
-   "author": {
+  "author": {
     "name": "Cédric",
     "email": "cedced19@gmail.com",
     "url": "https://github.com/cedced19/start-pifm"
@@ -25,7 +26,7 @@
     "gulp-useref": "^1.1.2",
     "gulp-util": "^3.0.2",
     "gulp-zip": "^2.0.2",
-    "node-webkit-builder": "^1.0.11"
+    "nw-builder": "^2.2.0"
   },
   "engines": {
     "node": ">=0.10.0"

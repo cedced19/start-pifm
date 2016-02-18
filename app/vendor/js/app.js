@@ -2,7 +2,7 @@ $(document).ready(function () {
     $.material.init();
     var fs = require('fs'),
         path = require('path'),
-        file = path.dirname(process.execPath) + '\\config.json',
+        file = path.dirname(process.execPath) + '/config.json',
         message = $('#message'),
         button = $('#end'),
         form =$('#form');
@@ -56,4 +56,3 @@ $(document).ready(function () {
     }
 
 });
-

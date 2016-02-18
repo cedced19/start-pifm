@@ -1,5 +1,5 @@
 // Generated on 2015-07-13 using generator-nwjs-material v0.0.0
-var builder = require('node-webkit-builder'),
+var builder = require('nw-builder'),
     gulp = require('gulp'),
     gutil = require('gulp-util'),
     zip = require('gulp-zip'),
@@ -48,11 +48,29 @@ gulp.task('install', function () {
     }
 });
 
-gulp.task('nw', ['minify', 'install'], function () {
+gulp.task('nw-linux64', ['minify', 'install'], function () {
 
     var nw = new builder({
         files: ['./minified/**/**', '!./minified/vendor/css/*.css0'],
-        platforms: ['osx32', 'osx64', 'linux32', 'linux64']
+        platforms: ['linux64'],
+        version: '0.12.3'
+    });
+
+    nw.on('log', function (msg) {
+        gutil.log('\'' + 'node-webkit-builder'.cyan + '\':', msg);
+    });
+
+    return nw.build().catch(function (err) {
+        gutil.log('\'' + 'node-webkit-builder'.cyan + '\':', err);
+    });
+});
+
+gulp.task('nw-linux64', ['minify', 'install'], function () {
+
+    var nw = new builder({
+        files: ['./minified/**/**', '!./minified/vendor/css/*.css0'],
+        platforms: ['linux32', 'osx32', 'osx64'],
+        version: '0.12.3'
     });
 
     nw.on('log', function (msg) {
@@ -69,7 +87,8 @@ gulp.task('nw-win', ['minify', 'install'], function () {
     var nw = new builder({
         files: ['./minified/**/**', '!./minified/vendor/css/*.css0'],
         platforms: ['win32'],
-        winIco: './favicon.ico'
+        winIco: './favicon.ico',
+        version: '0.12.3'
     });
 
     nw.on('log', function (msg) {
@@ -106,7 +125,7 @@ gulp.task('dist-linux32', ['nw'], function () {
         .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('dist-linux64', ['nw'], function () {
+gulp.task('dist-linux64', ['nw-linux64'], function () {
     return gulp.src('build/start-pifm/linux64/**/**')
         .pipe(zip('Linux64.zip'))
         .pipe(gulp.dest('dist/'));
