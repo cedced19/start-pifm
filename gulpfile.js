@@ -9,7 +9,8 @@ var builder = require('nw-builder'),
     uglify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css'),
     htmlmin = require('gulp-htmlmin'),
-    fs = require('fs');
+    fs = require('fs'),
+    pkg = require('./package.json');
 
 gulp.task('copy-fonts', function() {
     gulp.src('app/vendor/fonts/*.*')
@@ -53,7 +54,10 @@ gulp.task('nw-linux64', ['minify', 'install'], function () {
     var nw = new builder({
         files: ['./minified/**/**', '!./minified/vendor/css/*.css0'],
         platforms: ['linux64'],
-        version: '0.12.3'
+        version: '0.12.3',
+        appName: pkg.productName,
+        appVersion: pkg.version,
+        buildType: function () {return pkg.name;}
     });
 
     nw.on('log', function (msg) {
@@ -65,12 +69,15 @@ gulp.task('nw-linux64', ['minify', 'install'], function () {
     });
 });
 
-gulp.task('nw-linux64', ['minify', 'install'], function () {
+gulp.task('nw', ['minify', 'install'], function () {
 
     var nw = new builder({
         files: ['./minified/**/**', '!./minified/vendor/css/*.css0'],
         platforms: ['linux32', 'osx32', 'osx64'],
-        version: '0.12.3'
+        version: '0.12.3',
+        appName: pkg.productName,
+        appVersion: pkg.version,
+        buildType: function () {return pkg.name;}
     });
 
     nw.on('log', function (msg) {
@@ -88,7 +95,10 @@ gulp.task('nw-win', ['minify', 'install'], function () {
         files: ['./minified/**/**', '!./minified/vendor/css/*.css0'],
         platforms: ['win32'],
         winIco: './favicon.ico',
-        version: '0.12.3'
+        version: '0.12.3',
+        appName: pkg.productName,
+        appVersion: pkg.version,
+        buildType: function () {return pkg.name;}
     });
 
     nw.on('log', function (msg) {
